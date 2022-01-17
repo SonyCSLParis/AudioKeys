@@ -244,12 +244,12 @@ module.exports = {
 // Each file contains methods of the prototype.
 // We'll compose them all together here.
 
-var state = require('./AudioKeys.state');
-var events = require('./AudioKeys.events');
-var mapping = require('./AudioKeys.mapping');
-var buffer = require('./AudioKeys.buffer');
-var priority = require('./AudioKeys.priority');
-var special = require('./AudioKeys.special');
+var state = require("./AudioKeys.state");
+var events = require("./AudioKeys.events");
+var mapping = require("./AudioKeys.mapping");
+var buffer = require("./AudioKeys.buffer");
+var priority = require("./AudioKeys.priority");
+var special = require("./AudioKeys.special");
 
 function AudioKeys(options) {
   var self = this;
@@ -257,7 +257,9 @@ function AudioKeys(options) {
   self._setState(options);
   // initialize key mapping according to keyIdentifier used
   self._keyMap = self._getKeyMap(self._state.layoutIndependentMapping);
-  self._specialKeyMap = self._getSpecialKeyMap(self._state.layoutIndependentMapping);
+  self._specialKeyMap = self._getSpecialKeyMap(
+    self._state.layoutIndependentMapping
+  );
 
   // all listeners are stored in arrays in their respective properties.
   // e.g. self._listeners.down = [fn1, fn2, ... ]
@@ -311,6 +313,7 @@ AudioKeys.prototype._getSpecialKeyMap = special._getSpecialKeyMap;
 // Browserify will take care of making this a global
 // in a browser environment without a build system.
 module.exports = AudioKeys;
+module.exports.AudioKeys = AudioKeys;
 
 },{"./AudioKeys.buffer":1,"./AudioKeys.events":2,"./AudioKeys.mapping":4,"./AudioKeys.priority":5,"./AudioKeys.special":6,"./AudioKeys.state":7}],4:[function(require,module,exports){
 module.exports = {
@@ -720,6 +723,7 @@ module.exports = {
       }
     }
   },
+
 };
 
 },{}],7:[function(require,module,exports){
